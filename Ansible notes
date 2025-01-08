@@ -1,0 +1,17 @@
+Ansible
+
+	• Ansible is Configuration Management tool
+	• Provisioning, application deployment, orchestration
+	• Ansible uses ssh to login to remote host no need to install agent i.e., agentless
+	• Ansible also implemented pull based for few use cases.
+ansible all -i <IP>, -e ansible_user=ec2-user -e ansible_password=DevOps321 -m ping
+
+	• Control Node: node/server which is installed Ansible
+	• Manage Node:  nodes which you want to run tasks from ansible
+	• inventory: list of manage nodes
+	• modules: The input code of Ansible executes. Each module have specific functionality in ansible
+	• Playbook: playbook means set of actions we want to perform on manage nodes.
+                             we will use modules to write playbooks
+
+ansible all -i <IP>, -e ansible_user=ec2-user -e ansible_password=DevOps321  -b -m dnf -a "name=nginx state=started"
+-b: become root
