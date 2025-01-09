@@ -4,11 +4,14 @@
   vars_prompt:
   - name: Course
     prompt: Please enter course name
+    private: false #it is not confidential information
   - name: Duration
     prompt: Please enter course Duration
+    private: false
   - name: Trainer
     prompt: please enter trainer name
+    private: false
   tasks:
   - name: print course information
     ansible.builtin.debug:
-      msg: "Course duration is {{ Course }} duration of course is {{ Duration }} and trainer of the course is {{ Trainer }}"
+      msg: "Course name is {{ Course }} duration of course is {{ Duration }} and trainer of the course is {{ Trainer }}"
