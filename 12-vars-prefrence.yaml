@@ -4,7 +4,7 @@
   vars: #playbook level vars
     GREET: "play"
   vars_file:
-  - vars.yaml
+    - vars.yaml
   vars_prompt:
   - name: GREET
     prompt: Enter the value
