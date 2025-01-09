@@ -3,4 +3,4 @@
   tasks:
   - name: Hello
     ansible.builtin.debug:
-    msg: "Hello Ansible manage node"
+     msg: "Hello Ansible manage node"
