@@ -1,0 +1,7 @@
+- name: Playbook for variable from prompt
+  hosts: local
+  connection: local
+  tasks:
+  - name: print course information
+    ansible.builtin.debug:
+      msg: "Course name is {{ Course }} duration of course is {{ Duration }} and trainer of the course is {{ Trainer }}"
