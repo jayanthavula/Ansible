@@ -1,7 +1,7 @@
 - name: variables
   hosts: local
   connection: local
-  vars:
+  vars: #playbook level variables declare
     course: "Devops with AWS"
     Duration: 120hrs
     Trainer: Sivakumar

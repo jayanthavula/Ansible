@@ -1,0 +1,9 @@
+- name: Playbook to get variable from file
+  hosts: local
+  connection: local
+  vars_files:
+  -  vars.yaml:
+  tasks:
+  - name: print course information
+    ansible.builtin.debug:
+      msg: "Course is {{ Course }}, duration is {{ Duration }} trainer is {{ Trainer }}"
