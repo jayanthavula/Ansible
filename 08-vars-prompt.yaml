@@ -1,0 +1,14 @@
+- name: Playbook for variable from prompt
+  hosts: local
+  connection: local
+  vars_prompt:
+  - name: Course
+    prompt: Please enter course name
+  - name: Duration
+    prompt: Please enter course Duration
+  - name: Trainer
+    prompt: please enter trainer name
+  tasks:
+  - name: print course information
+    ansible.builtin.debug:
+      msg: "Course duration is {{ Course }} duration of course is {{ Duration }} and trainer of the course is {{ Trainer }}"      
