@@ -32,11 +32,30 @@
     ansible.builtin.debug:
       msg: "Course info {{ course | items2dict }}"
 
-  - name:  Convert to lower
+  - name:  Convert upper to lower
     vars:
       name: "Sivakumar Readdy M"
     ansible.builtin.debug:
-      msg: " Hello {{ name | lower }}"    
+      msg: " Hello {{ name | lower }}"
+
+  - name: Convert lower to Upper
+    vars: 
+      name: "sivakumar reddy"
+    ansible.builtin.debug:
+      msg: "Hello {{ name | upper }}"
+
+  - name: Print max and min
+    vars:
+      numbers: [1,34,56,72,98,4]
+    ansible.builtin.debug:
+       msg: " Max num is {{ numbers | max }} min number is {{ numbers | min}}"
+
+
+  - name: check ip address is valid or not
+    vars: 
+      ip: "54.173.65.102"
+    ansible.builtin.debug:
+       msg: "{{ ip | ansible.utils.ipaddr }}"             
 
 
 
