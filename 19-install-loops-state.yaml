@@ -4,8 +4,8 @@
   tasks:
   - name: install in loop
     ansible.builtin.package:
-      name: "{{ item }}"
-      state: "{{}}"
+      name: "{{ item.name }}"
+      state: "{{ item.state }}"
     loop:
       - { name: 'wget', state: 'absent'}
       - { name: 'git', state: 'absent'}
