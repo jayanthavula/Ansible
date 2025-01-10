@@ -1,4 +1,4 @@
-- name: Playbook for variable from prompt
+- name: Playbook for variable from Inventory
   hosts: local
   connection: local
   tasks:
