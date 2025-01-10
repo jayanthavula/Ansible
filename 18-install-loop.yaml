@@ -3,9 +3,13 @@
   become: yes
   tasks:
   - name: install in loop
-    ansible.builtin.dnf:
-    loop:
-    - wget
-    - git
-    - nginx
-    when: ansible_os_family == "RedHat"
+    ansible.builtin.package:
+      name: {{ item }}
+      state: present
+      loop:
+       - wget
+       - git
+       - nginx
+       - mysql
+       - zip
+      when: ansible_os_family == "RedHat"
