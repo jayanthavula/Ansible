@@ -16,9 +16,10 @@
 
   - name: convert string to list
     vars:
-      course: "Ansbile"
-      duration: 120
-      trainer: sivakumar
+      course:
+        name: "Ansbile"
+        duration: 120
+        trainer: sivakumar
     ansible.builtin.debug:
       msg: "Course info {{ course | dict2item }}"
 
