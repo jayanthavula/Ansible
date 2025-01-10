@@ -1,20 +1,21 @@
-- name: Data types in Yaml
+- name: Playbook for data types
   hosts: local
   connection: local
   vars:
-    course_name: "Devops with AWS"  #string
-    duration: "120" #int
-    topics: #list, [] this means list
-    - linux
-    - shell
-    - ansible
-    - AWS
-    live: true #boolean
-    tools:
-      ci: jenkins #map {}
-      cloud: AWS
-      container: docker
+   course: "Devops with AWS"
+   Duration: 120
+   topics:
+   - AWS
+   - Devops
+   - Shell
+   - Ansible
+   is_live: true
+   tools:
+     ci: jenkins
+     cloud: AWS
+     cotainerization: Docker
   tasks:
-  - name: print details
+  - name: data type print
     ansible.builtin.debug:
-      msg: "Hello i am learning {{ course_name }} and duration is {{ duration }}, topics are {{ topics }}, is it live {{ live }} and tools covered are {{ tools }} "    
+      msg: "Hello I am learning {{ course }}, and duration is {{ Duration }}, topics covered are {{ topics }}, is it live {{ is_live }} and tools using are {{ tools }}"
+    
