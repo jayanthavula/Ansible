@@ -1,0 +1,24 @@
+- name: filters
+  hosts: local
+  connection: local
+  tasks:
+  - name: handle undefine variable
+    ansible.builtin.debug:
+      msg: "Hello {{ person | default('Ramesh') }}"
+
+
+  - name: convert string to list
+    vars:
+      fruits: "apple, banana, orange"
+    ansible.builtin.debug:
+      msg: "Furits are{{ fruits | split(',')}}"
+
+
+  - name: convert string to list
+    vars:
+      course: "Ansbile"
+      duration: 120
+      trainer: sivakumar
+    ansible.builtin.debug:
+      msg: "Course info {{ course | dict2times }}"
+
