@@ -1,0 +1,11 @@
+- name: Install pacakges in loop
+  hosts: web
+  become: yes
+  tasks:
+  - name: install in loop
+    ansible.builtin.dnf:
+    loop:
+    - wget
+    - git
+    - nginx
+  when: ansible_os_family == "RedHat"
