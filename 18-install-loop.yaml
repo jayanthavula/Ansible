@@ -4,12 +4,12 @@
   tasks:
   - name: install in loop
     ansible.builtin.package:
-      name: {{ item }}
+      name: "{{ item }}"
       state: present
-      loop:
-       - wget
-       - git
-       - nginx
-       - mysql
-       - zip
-      when: ansible_os_family == "RedHat"
+    loop:
+      - wget
+      - git
+      - nginx
+      - mysql
+      - zip
+    when: ansible_os_family == "RedHat"
