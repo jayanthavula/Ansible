@@ -3,7 +3,7 @@
   connection: local
   vars:
     subnet_id: subnet-082c8a70963f4eed4
-    sg-id: sg-0ba3f07a1e0cdffa4
+    sg_id: sg-0ba3f07a1e0cdffa4
     ami_id: ami-09c813fb71547fc4f
     instance_type: t2.micro
     instances:
@@ -11,6 +11,13 @@
     - backend
     - fronted
   tasks:
+  - name: install AWS python libs
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+    - boto3
+    - botocore3  
   - name: create ec2 servers
     amazon.aws.ec2_instance:
       name: "{{ item }}"
