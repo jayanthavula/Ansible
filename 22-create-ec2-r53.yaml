@@ -1,6 +1,6 @@
 - name: Create Ec2 and R53 record from Ansible
-  hosts: local
-  connection: local
+  hosts: localhost
+  connection: localhost
 
   vars:
     subnet_id: subnet-082c8a70963f4eed4
