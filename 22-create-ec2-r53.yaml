@@ -1,6 +1,7 @@
-- name: create ec2 r53
+- name: Create Ec2 and R53 record from Ansible
   hosts: local
   connection: local
+
   vars:
     subnet_id: subnet-082c8a70963f4eed4
     sg_id: sg-0ba3f07a1e0cdffa4
@@ -9,26 +10,22 @@
     instances:
     - mysql
     - backend
-    - fronted
+    - frontend
+  
   tasks:
-  - name: install AWS python libs
+  - name: install python libs
     ansible.builtin.pip:
-      name: "{{ item }}"
+      name: {{ item }}
       executable: pip3.9
     loop:
     - boto3
     - botocore
 
-  - name: create ec2 servers
+  - name: create ec2 instances
     amazon.aws.ec2_instance:
       name: "{{ item }}"
       subnet_id: "{{ subnet_id }}"
       security_group: "{{ sg_id }}"
-      image_id: "{{ ami_id }}"
+      image_id: "{{ ami_id  }}"
       instance_type: "{{ instance_type }}"
     loop: "{{ instances }}"
-    register: ec2_info
-
-  - name: print ec2_info
-    ansible.builtin.debug:
-       msg: "{{ec2_info}}"
