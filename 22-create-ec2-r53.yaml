@@ -7,6 +7,7 @@
     sg_id: sg-0ba3f07a1e0cdffa4
     ami_id: ami-09c813fb71547fc4f
     instance_type: t2.micro
+    zone: jaydevops.online
     instances:
     - mysql
     - backend
@@ -38,4 +39,16 @@
   - name: print ec2 instances private IP address
     ansible.builtin.debug:
       msg: "{{ item.instances[0].private_ip_address }}"
-    loop: "{{ ec2_info.results }}"   
+    loop: "{{ ec2_info.results }}"  
+
+  - name: create private pi r53 records
+    amazon.aws.route53:
+      state: present
+      zone: "{{ zone }}"
+      record: "{{ item.item }}.{{ zone }}"
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].private_ip_address }}"
+      wait: true
+      overwrite: true
+    loop: "{{ ec2_info.results }}"  
