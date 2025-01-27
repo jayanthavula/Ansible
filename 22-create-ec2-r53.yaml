@@ -1,6 +1,6 @@
 - name: Create Ec2 and R53 record from Ansible
-  hosts: localhost
-  connection: localhost
+  hosts: local
+  connection: local
 
   vars:
     subnet_id: subnet-082c8a70963f4eed4
@@ -33,4 +33,9 @@
 
   - name: print ec2_info
     ansible.builtin.debug:
-      msg: "Aws ec2 info {{ ec2_info }}"  
+      msg: "Aws ec2 info {{ ec2_info }}"
+
+  - name: print ec2 instances IP address
+    ansible.builtin.debug:
+      msg: "{{ item.item }}: {{ item.instances[0].private_ip_address }}"
+    loop: "{{ ec2_info.results }}"   
