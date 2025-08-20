@@ -3,6 +3,7 @@
   become: yes # -b
   tasks:
   - name: Install
+  # reason why we are using package module even we have dnf module is dnf wont work on Ubuntu here package module is heterogenous
     ansible.builtin.package:
       name: nginx
       state: present
